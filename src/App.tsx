@@ -5,6 +5,8 @@ import { PluginCard } from './components/PluginCard';
 import { SearchBar } from './components/SearchBar';
 import { User, Shield, Sun, Moon } from 'lucide-react';
 import { useTheme } from './hooks/useTheme';
+import rustImage from './assets/images/rust.webp';
+
 
 function App() {
   const [activeTab, setActiveTab] = useState<'user' | 'admin'>('user');
@@ -40,9 +42,9 @@ function App() {
             <div className="flex items-center gap-8">
               <div className="w-48 h-48 flex-shrink-0 overflow-hidden rounded-lg">
                 <img
-                    src="/images/rust.webp"
+                    src={rustImage}
                     alt="Rust"
-                    className="w-full h-full object-cover object-center opacity-75 dark:opacity-50"
+                    className="w-full h-full object-cover object-center"
                 />
               </div>
               <div>
