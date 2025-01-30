@@ -40,7 +40,7 @@ function App() {
             <div className="flex items-center gap-8">
               <div className="w-48 h-48 flex-shrink-0 overflow-hidden rounded-lg">
                 <img
-                    src="/images/rust.webp"
+                    src="rust-docs/public/images/rust.webp"
                     alt="Code Editor"
                     className="w-full h-full object-cover object-center opacity-75 dark:opacity-50"
                 />
