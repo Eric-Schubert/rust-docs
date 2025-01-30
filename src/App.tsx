@@ -5,6 +5,7 @@ import { PluginCard } from './components/PluginCard';
 import { SearchBar } from './components/SearchBar';
 import { User, Shield, Sun, Moon } from 'lucide-react';
 import { useTheme } from './hooks/useTheme';
+import rustImage from './public/images/rust.webp';
 
 function App() {
   const [activeTab, setActiveTab] = useState<'user' | 'admin'>('user');
@@ -40,7 +41,7 @@ function App() {
             <div className="flex items-center gap-8">
               <div className="w-48 h-48 flex-shrink-0 overflow-hidden rounded-lg">
                 <img
-                    src="rust-docs/public/images/rust.webp"
+                    src={rustImage}
                     alt="Code Editor"
                     className="w-full h-full object-cover object-center opacity-75 dark:opacity-50"
                 />
