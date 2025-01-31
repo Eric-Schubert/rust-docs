@@ -2,12 +2,23 @@ import { Plugin } from '../types';
 
 export const userPlugins: Plugin[] = [
   {
+    "name": "Cupboard No Decay",
+    "description": "Verhindert den Verfall von Lagerhäusern (Cupboards) im Spiel, um sicherzustellen, dass sie dauerhaft bestehen bleiben.",
+    "commands": [
+      { "command": "/cupboardnodisable", "description": "Deaktiviert den No Decay Schutz für das nächste Lagerhaus" },
+      { "command": "/cupboardnoset <zeit>", "description": "Setzt die Verfallszeit für Lagerhäuser auf die angegebene Zeit" },
+      { "command": "/cupboardnomessage", "description": "Schaltet Benachrichtigungen über den No Decay Schutz ein oder aus" },
+      { "command": "/cupboardhelp", "description": "Zeigt alle verfügbaren Cupboard No Decay Befehle an" }
+    ]
+  },
+
+  {
     "name": "Guarded Crate",
-    "description": "Verwaltet die Guarded Crates im Spiel, ermöglicht es Spielern, geschützte Kisten zu finden und zu öffnen.",
+    "description": "Verwaltet die Guarded Crates im Spiel und ermöglicht es Spielern, geschützte Kisten zu finden und zu öffnen.",
     "commands": [
       { "command": "/opencrate", "description": "Öffnet eine Guarded Crate in deiner Nähe" },
       { "command": "/crateinfo <crate_id>", "description": "Zeigt Informationen über eine spezifische Crate an" },
-      { "command": "/cratehelp", "description": "Zeigt alle verfügbaren Guarded Crate Befehle" }
+      { "command": "/cratehelp", "description": "Zeigt alle verfügbaren Guarded Crate Befehle an" }
     ]
   },
 
@@ -30,12 +41,33 @@ export const userPlugins: Plugin[] = [
 
   {
     "name": "Raidable Bases",
-    "description": "Verwaltet raidable Bases im Spiel, erlaubt Spielern, Basen zu raiden und zu kontrollieren.",
+    "description": "Verwaltet raidable Bases im Spiel und erlaubt Spielern, Basen zu raiden und zu kontrollieren.",
     "commands": [
       { "command": "/raidablebases list", "description": "Listet alle raidable Bases auf" },
-      { "command": "/raidablebases join <base_id>", "description": "Tritt einer Raids auf eine Base bei" },
+      { "command": "/raidablebases join <base_id>", "description": "Tritt einem Raid auf eine Base bei" },
       { "command": "/raidablebases status <base_id>", "description": "Zeigt den aktuellen Status einer Base an" },
-      { "command": "/raidablebases help", "description": "Zeigt alle verfügbaren Raidable Bases Befehle" }
+      { "command": "/raidablebases help", "description": "Zeigt alle verfügbaren Raidable Bases Befehle an" }
+    ]
+  },
+
+  {
+    "name": "NPC Loadouts",
+    "description": "Ermöglicht das Anpassen und Verwalten der Ausrüstungen von NPCs im Spiel.",
+    "commands": [
+      { "command": "/npcloadouts interact", "description": "Interagiert mit einem NPC-Loadout in deiner Nähe" },
+      { "command": "/npcloadouts list", "description": "Listet alle verfügbaren NPC-Loadouts auf" },
+      { "command": "/npcloadouts help", "description": "Zeigt alle verfügbaren NPC Loadouts Befehle an" }
+    ]
+  },
+
+  {
+    "name": "Better Loot",
+    "description": "Verbessert die Loot-Systeme im Spiel, um vielfältigere und interessantere Beute zu ermöglichen.",
+    "commands": [
+      { "command": "/betterloot spawnloot <location>", "description": "Spawnt eine verbesserte Loot-Kiste an der angegebenen Position" },
+      { "command": "/betterloot setspawnrate <rate>", "description": "Setzt die Spawnrate für verbesserte Loot-Kisten" },
+      { "command": "/betterloot lootlist", "description": "Listet alle verfügbaren Loot-Typen auf" },
+      { "command": "/betterloot help", "description": "Zeigt alle verfügbaren Better Loot Befehle an" }
     ]
   },
 
@@ -45,19 +77,34 @@ export const userPlugins: Plugin[] = [
     "commands": [
       { "command": "/humannpc interact", "description": "Interagiert mit einem NPC in deiner Nähe" },
       { "command": "/humannpc list", "description": "Listet alle NPCs in deiner Nähe auf" },
-      { "command": "/humannpc help", "description": "Zeigt alle verfügbaren Human NPC Befehle" }
+      { "command": "/humannpc help", "description": "Zeigt alle verfügbaren Human NPC Befehle an" }
     ]
   },
 
   {
-    "name": "Tank Commander",
-    "description": "Verwaltet die Teilnahme und den Status der Spieler in den Tank-Teams.",
+    "name": "Night Zombies",
+    "description": "Verwalte die Erscheinung und das Verhalten von Zombies bei Nacht im Spiel.",
     "commands": [
-      { "command": "/tankcmd join", "description": "Tritt einem Tank-Team bei" },
-      { "command": "/tankcmd leave", "description": "Verlasse dein aktuelles Tank-Team" },
-      { "command": "/tankcmd status", "description": "Zeigt den Status deines Tank-Teams an" },
-      { "command": "/tankcmd help", "description": "Zeigt alle verfügbaren Tank Commander Befehle" }
+      { "command": "/nightzombies spawn", "description": "Spawnt Zombies an definierten Positionen" },
+      { "command": "/nightzombies stop", "description": "Stoppt das Spawnen von Zombies bei Nacht" },
+      { "command": "/nightzombies setdifficulty <level>", "description": "Setzt die Schwierigkeit für Zombies" },
+      { "command": "/nightzombies help", "description": "Zeigt alle verfügbaren Night Zombies Befehle an" }
     ]
   },
+
+  {
+    "name": "Auto Deposit",
+    "description": "Automatisiert das Einzahlen von Ressourcen und Gegenständen in die Lagerkiste des Spielers.",
+    "commands": [
+      { "command": "/autodeposit enable", "description": "Aktiviert die Auto Deposit Funktion" },
+      { "command": "/autodeposit disable", "description": "Deaktiviert die Auto Deposit Funktion" },
+      { "command": "/autodeposit status", "description": "Zeigt den aktuellen Status der Auto Deposit Funktion an" },
+      { "command": "/autodeposit help", "description": "Zeigt alle verfügbaren Auto Deposit Befehle an" }
+    ]
+  },
+
+
+
+
 
 ];
