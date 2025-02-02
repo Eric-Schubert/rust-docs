@@ -1,160 +1,89 @@
 import {Plugin} from '../types';
 
 export const adminPlugins: Plugin[] = [
-
     {
-        "name": "Cupboard No Decay Admin",
-        "description": "Administrative Befehle zur Verwaltung des Cupboard No Decay Plugins",
+        "name": "Kits Admin",
+        "description": "Administrative Befehle für das Rust Kits Plugin, um Kits zu erstellen, zu verwalten und zu konfigurieren.",
         "commands": [
             {
-                "command": "/cupboardadmin setglobaldecay <zeit>",
-                "description": "Setzt die globale Verfallszeit für alle Lagerhäuser"
+                "command": "/kit help",
+                "description": "Zeigt das Hilfemenü mit allen verfügbaren Befehlen an."
             },
             {
-                "command": "/cupboardadmin reset <player>",
-                "description": "Setzt den No Decay Schutz für einen bestimmten Spieler zurück"
+                "command": "/kit list",
+                "description": "Listet alle vorhandenen Kits auf."
             },
-            {"command": "/cupboardadmin list", "description": "Listet alle Spieler mit aktivem No Decay Schutz auf"},
             {
-                "command": "/cupboardadmin config reload",
-                "description": "Lädt die Cupboard No Decay Plugin-Konfiguration neu"
+                "command": "/kit add",
+                "description": "Beginnt die Erstellung eines neuen Kits. Alternativ auch /kit new."
+            },
+            {
+                "command": "/kit new",
+                "description": "Beginnt die Erstellung eines neuen Kits (Synonym zu /kit add)."
+            },
+            {
+                "command": "/kit edit <kitname>",
+                "description": "Beginnt das Bearbeiten eines bereits erstellten Kits."
+            },
+            {
+                "command": "/kit remove <kitname>",
+                "description": "Löscht das angegebene Kit. Alternativ auch /kit delete <kitname>."
+            },
+            {
+                "command": "/kit delete <kitname>",
+                "description": "Löscht das angegebene Kit (Synonym zu /kit remove)."
+            },
+            {
+                "command": "/kit give <player> <kitname>",
+                "description": "Gibt einem bestimmten Spieler ein angegebenes Kit (Name oder ID)."
+            },
+            {
+                "command": "/kit givenpc <kitname>",
+                "description": "Gibt dem NPC, den du gerade anschaust, das angegebene Kit."
+            },
+            {
+                "command": "/kit reset",
+                "description": "Setzt alle Kit-Nutzungsdaten für alle Spieler zurück."
+            },
+            {
+                "command": "/kit resetuses <player> <kitname>",
+                "description": "Setzt die Nutzung des angegebenen Kits für den angegebenen Spieler zurück."
             }
         ]
     },
 
     {
         "name": "Guarded Crate Admin",
-        "description": "Administrative Befehle zur Verwaltung der Guarded Crate Plugin",
+        "description": "Administrative Befehle zur Verwaltung und Steuerung von Guarded Crate Events.",
         "commands": [
             {
-                "command": "/guardedcrate spawn <location>",
-                "description": "Spawnt eine neue Guarded Crate an der angegebenen Position"
+                "command": "/gcrate start <event-name|optional>",
+                "description": "Startet das angegebene Event oder ein zufälliges Event, wenn kein Name angegeben wird."
             },
             {
-                "command": "/guardedcrate remove <crate_id>",
-                "description": "Entfernt eine Guarded Crate anhand ihrer ID"
-            },
-            {"command": "/guardedcrate list", "description": "Listet alle aktiven Guarded Crates auf"},
-            {
-                "command": "/guardedcrate setguard <crate_id> <guard_type>",
-                "description": "Setzt den Guard-Typ für eine bestimmte Crate"
-            },
-            {"command": "/guardedcrate config reload", "description": "Lädt die Guarded Crate Plugin-Konfiguration neu"}
-        ]
-    },
-
-    {
-        "name": "Xperience Admin",
-        "description": "Administrative Befehle für die Xperience Plugin",
-        "commands": [
-            {"command": "/xpadmin reset <player>", "description": "Setzt die XP und Statistiken eines Spielers zurück"},
-            {"command": "/xpadmin setlevel <player> <level>", "description": "Setzt das Level eines Spielers"},
-            {"command": "/xpadmin givexp <player> <amount>", "description": "Gibt einem Spieler XP"},
-            {"command": "/xpadmin config reload", "description": "Lädt die Plugin-Konfiguration neu"}
-        ]
-    },
-
-    {
-        "name": "Raidable Bases Admin",
-        "description": "Administrative Befehle für die Raidable Bases Plugin",
-        "commands": [
-            {
-                "command": "/raidablebases create <location>",
-                "description": "Erstellt eine neue raidable Base an der angegebenen Position"
+                "command": "/gcrate here <event-name>",
+                "description": "Startet das angegebene Event an deiner aktuellen Position."
             },
             {
-                "command": "/raidablebases delete <base_id>",
-                "description": "Entfernt eine raidable Base anhand ihrer ID"
+                "command": "/gcrate position <event-name> <x, y, z>",
+                "description": "Startet das angegebene Event an den spezifizierten Koordinaten."
             },
             {
-                "command": "/raidablebases setreward <base_id> <reward>",
-                "description": "Setzt die Belohnung für das Raiden einer bestimmten Base"
+                "command": "/gcrate stop",
+                "description": "Stoppt alle aktuell laufenden Guarded Crate Events."
             },
             {
-                "command": "/raidablebases config reload",
-                "description": "Lädt die Raidable Bases Plugin-Konfiguration neu"
+                "command": "/gcrate amount <event-name> <number>",
+                "description": "Ändert die Anzahl der Wächter (Guards), die für das angegebene Event gespawnt werden."
+            },
+            {
+                "command": "/gcrate loot <event-name>",
+                "description": "Lege Items in dein Hauptinventar, um die Loot-Items für das angegebene Event festzulegen."
+            },
+            {
+                "command": "/gcrate loadout <event-name>",
+                "description": "Lege Items in deinen Ausrüstungs- und Gürtel-Slot, um den Loadout der Wächter für das angegebene Event festzulegen."
             }
-        ]
-    },
-
-    {
-        "name": "NPC Loadouts Admin",
-        "description": "Administrative Befehle für die NPC Loadouts Plugin",
-        "commands": [
-            {
-                "command": "/npcloadouts add <npc_id> <loadout>",
-                "description": "Fügt ein Loadout zu einem bestimmten NPC hinzu"
-            },
-            {"command": "/npcloadouts remove <npc_id>", "description": "Entfernt das Loadout eines bestimmten NPCs"},
-            {
-                "command": "/npcloadouts spawn <type> <location>",
-                "description": "Spawnt einen neuen NPC vom angegebenen Typ an der Position"
-            },
-            {
-                "command": "/npcloadouts setbehavior <npc_id> <behavior>",
-                "description": "Setzt das Verhalten für einen bestimmten NPC"
-            },
-            {"command": "/npcloadouts config reload", "description": "Lädt die NPC Loadouts Plugin-Konfiguration neu"}
-        ]
-    },
-
-    {
-        "name": "Better Loot Admin",
-        "description": "Administrative Befehle für die Better Loot Plugin",
-        "commands": [
-            {"command": "/betterloot configure", "description": "Öffnet die Konfigurationsdatei für Better Loot"},
-            {"command": "/betterloot reload", "description": "Lädt die Better Loot Plugin-Konfiguration neu"},
-            {
-                "command": "/betterloot addtype <loot_type> <parameters>",
-                "description": "Fügt einen neuen Loot-Typ hinzu"
-            },
-            {"command": "/betterloot removetype <loot_type>", "description": "Entfernt einen bestehenden Loot-Typ"}
-        ]
-    },
-
-    {
-        "name": "Human NPC Admin",
-        "description": "Administrative Befehle für die Human NPC Plugin",
-        "commands": [
-            {
-                "command": "/humannpc spawn <type> <location>",
-                "description": "Spawnt einen neuen NPC vom angegebenen Typ an der Position"
-            },
-            {"command": "/humannpc remove <npc_id>", "description": "Entfernt einen NPC anhand seiner ID"},
-            {
-                "command": "/humannpc setdialogue <npc_id> <dialogue>",
-                "description": "Setzt den Dialog für einen spezifischen NPC"
-            },
-            {"command": "/humannpc list", "description": "Listet alle aktiven NPCs auf"},
-            {"command": "/humannpc config reload", "description": "Lädt die Human NPC Plugin-Konfiguration neu"}
-        ]
-    },
-
-    {
-        "name": "Night Zombies Admin",
-        "description": "Administrative Befehle für die Night Zombies Plugin",
-        "commands": [
-            {"command": "/nightzombies configure", "description": "Öffnet die Konfigurationsdatei für Night Zombies"},
-            {
-                "command": "/nightzombies reset",
-                "description": "Setzt alle Night Zombies Einstellungen auf Standard zurück"
-            },
-            {"command": "/nightzombies spawnall", "description": "Spawnt Zombies an allen konfigurierten Positionen"},
-            {"command": "/nightzombies config reload", "description": "Lädt die Night Zombies Plugin-Konfiguration neu"}
-        ]
-    },
-
-    {
-        "name": "Auto Deposit Admin",
-        "description": "Administrative Befehle für die Auto Deposit Plugin",
-        "commands": [
-            {"command": "/autodeposit setlimit <amount>", "description": "Setzt das Einzahlungs-Limit für Ressourcen"},
-            {"command": "/autodeposit reload", "description": "Lädt die Auto Deposit Plugin-Konfiguration neu"},
-            {
-                "command": "/autodeposit reset <player>",
-                "description": "Setzt die Auto Deposit Einstellungen eines Spielers zurück"
-            },
-            {"command": "/autodeposit configure", "description": "Öffnet die Konfigurationsdatei für Auto Deposit"}
         ]
     },
 
@@ -164,7 +93,7 @@ export const adminPlugins: Plugin[] = [
         "commands": [
             {
                 "command": "/perms data",
-                "description": "Backup und Wiederherstellung von Berechtigungen und/oder Gruppen - lokale Datendatei und/oder SQL."
+                "description": "Backup und Wiederherstellung von Berechtigungen und/oder Gruppen – lokale Datendatei und/oder SQL."
             },
             {
                 "command": "/perms",
@@ -190,39 +119,72 @@ export const adminPlugins: Plugin[] = [
     },
 
     {
-        "name": "Remover Tool Admin",
-        "description": "Administrative Befehle für das Remover Tool Plugin, das das Entfernen unerwünschter Entitäten, Gegenstände oder Strukturen im Spiel ermöglicht.",
+        "name": "Xperience Admin",
+        "description": "Administrative Befehle für das XPerience-Plugin, erfordern Server-Admin-Rechte oder die Berechtigung 'xperience.admin'.",
         "commands": [
             {
-                "command": "/remover help",
-                "description": "Zeigt alle verfügbaren Remover Tool Befehle an."
+                "command": "/xpresetall",
+                "description": "Löscht und setzt sämtliche Spielerdaten im XPerience-System zurück."
             },
             {
-                "command": "/remover remove <entity>",
-                "description": "Entfernt eine bestimmte Entität aus der Spielwelt."
+                "command": "/resetalllevels",
+                "description": "Setzt das Level aller Spieler auf 0 zurück."
             },
             {
-                "command": "/remover removeall <entity>",
-                "description": "Entfernt alle Entitäten eines bestimmten Typs aus der Spielwelt."
+                "command": "/resetallranks",
+                "description": "Setzt den Rang aller Spieler auf 0 zurück."
             },
             {
-                "command": "/remover radius <entity> <radius>",
-                "description": "Entfernt Entitäten eines bestimmten Typs innerhalb eines angegebenen Radius."
+                "command": "/xpreset <name|id> <playername|steamid>",
+                "description": "Setzt alle Fortschritte des angegebenen Spielers auf 0 zurück."
             },
             {
-                "command": "/remover config reload",
-                "description": "Lädt die Remover Tool Plugin-Konfiguration neu."
+                "command": "/resetlevel <playername>",
+                "description": "Setzt das Level eines bestimmten Spielers auf 0."
             },
             {
-                "command": "/remover list",
-                "description": "Listet alle derzeit entfernbare Entitätstypen auf."
+                "command": "/resetrank <playername>",
+                "description": "Setzt den Rang eines bestimmten Spielers auf 0."
             },
             {
-                "command": "/remover undo",
-                "description": "Hebt die letzte entfernte Entität oder Aktion rückgängig auf."
+                "command": "/resetharvest",
+                "description": "Löscht alle Erntedaten (Harvest-Daten) im XPerience-System."
+            },
+            {
+                "command": "/xpadminhelp",
+                "description": "Zeigt eine Liste aller verfügbaren Admin-Befehle im XPerience-System an."
+            },
+            {
+                "command": "/xpgive <name|id> <playername|steamid> <amount>",
+                "description": "Gewährt dem angegebenen Spieler die angegebene Menge an Erfahrung (XP)."
+            },
+            {
+                "command": "/xpgiveall <amount>",
+                "description": "Gewährt allen Spielern die angegebene Menge an Erfahrung (XP)."
+            },
+            {
+                "command": "/xptake <name|id> <playername|steamid> <amount>",
+                "description": "Zieht einem bestimmten Spieler die angegebene Menge an Erfahrung (XP) ab."
+            },
+            {
+                "command": "/xpconfig",
+                "description": "Öffnet das Admin-Panel für XPerience-Einstellungen im Spiel."
+            },
+            {
+                "command": "/xpfix",
+                "description": "Setzt sämtliche Spieler-Daten (außer XP) zurück und berechnet Level, Punkte und Anforderungen neu."
+            },
+            {
+                "command": "/xpexclude <name|id> <playername|steamid> <true|false>",
+                "description": "Schließt den angegebenen Spieler vom XPerience-Addon aus (true) oder hebt die Ausgrenzung wieder auf (false)."
             }
         ]
-    }
+    },
+
+
+
+
+
 
 
 ];
